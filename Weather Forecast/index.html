@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Forecast</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <div id="search-container">
+      <h1 class="MyWeather">WEATHER</h1>
+      <!-- Search -->
+      <div id="search">
+        <input type="text" id="search-input" placeholder="Enter city name" />
+        <button id="search-button" onclick="getWeather()">Search</button>
+      </div>
+    </div>
+
+    <div id="tabs">
+      <div id="Today-tab" class="tab" onclick="changeContext()">Today</div>
+      <div id="5day-tab" class="tab" onclick="changeContext5()">5-day Forecast</div>
+    </div>
+  </header>
+
+  <div id="weather-container">
+    <div id="current-weather">
+      <!-- Current weather UP -->
+      <div id="current-weather-up">
+        <p class="title-weather">CURRENT WEATHER</p>
+        <p class="date-weather"></p>
+      </div>
+
+      <!-- Current weather DOWN -->
+      <div id="current-weather-down">
+        <div id="current-weather-left">
+          <li class="icon"></li>
+          <p class="description"></p>
+        </div>
+
+        <!-- Current weather CENTER -->
+        <div id="current-weather-center">
+          <p class="degree"></p>
+          <p class="gray-text-littl"></p>
+        </div>
+
+        <!-- Current weather RIGHT -->
+        <div id="current-weather-right">
+          <p class="senrise"></p>
+          <p class="sunset"></p>
+          <p class="duration"></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="hourly-weather">
+      <p class="title-weather">HOURLY</p>
+      <div id="hourly-weather-down">
+        <div class="Today">
+          <li class="gray-text">Today</li>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <li class="gray-text">Forecast</li>
+          <li class="gray-text">Temp (°C)</li>
+          <li class="gray-text">RealFeel</li>
+          <li class="gray-text">Wind (km/h)</li>
+        </div>
+
+        <!-- Hourly weather 1-6h -->
+        <div id="hourly-weather-1">
+          <li class="today-li-1"></li>
+          <li class="icon-li-1"></li>
+          <li class="forecast-li-1"></li>
+          <li class="temp-li-1"></li>
+          <li class="realFeel-li-1"></li>
+          <li class="wind-li-1"></li>
+        </div>
+        <div id="hourly-weather-2">
+          <li class="today-li-2"></li>
+          <li class="icon-li-2"></li>
+          <li class="forecast-li-2"></li>
+          <li class="temp-li-2"></li>
+          <li class="realFeel-li-2"></li>
+          <li class="wind-li-2"></li>
+        </div>
+        <div id="hourly-weather-3">
+          <li class="today-li-3"></li>
+          <li class="icon-li-3"></li>
+          <li class="forecast-li-3"></li>
+          <li class="temp-li-3"></li>
+          <li class="realFeel-li-3"></li>
+          <li class="wind-li-3"></li>
+        </div>
+        <div id="hourly-weather-4">
+          <li class="today-li-4"></li>
+          <li class="icon-li-4"></li>
+          <li class="forecast-li-4"></li>
+          <li class="temp-li-4"></li>
+          <li class="realFeel-li-4"></li>
+          <li class="wind-li-4"></li>
+        </div>
+        <div id="hourly-weather-5">
+          <li class="today-li-5"></li>
+          <li class="icon-li-5"></li>
+          <li class="forecast-li-5"></li>
+          <li class="temp-li-5"></li>
+          <li class="realFeel-li-5"></li>
+          <li class="wind-li-5"></li>
+        </div>
+        <div id="hourly-weather-6">
+          <li class="today-li-6"></li>
+          <li class="icon-li-6"></li>
+          <li class="forecast-li-6"></li>
+          <li class="temp-li-6"></li>
+          <li class="realFeel-li-6"></li>
+          <li class="wind-li-6"></li>
+        </div>
+      </div>
+    </div>
+
+    <div id="nearby-places">
+      <p class="title-weather">NEARBY PLACES</p>
+      <div id="nearby-places-1">
+        <!-- Right -->
+        <div id="nearby-places-right">
+          <div class="nearby-places-right-up">
+            <p class="nearby-places-city-1"></p>
+            <li class="nearby-places-icon-1"></li>
+            <p class="nearby-places-temp-1"></p>
+          </div>
+
+          <div class="nearby-places-right-down">
+            <p class="nearby-places-city-2"></p>
+            <li class="nearby-places-icon-2"></li>
+            <p class="nearby-places-temp-2"></p>
+          </div>
+        </div>
+
+        <!-- Left -->
+        <div id="nearby-places-left">
+          <div class="nearby-places-left-up">
+            <p class="nearby-places-city-3"></p>
+            <li class="nearby-places-icon-3"></li>
+            <p class="nearby-places-temp-3"></p>
+          </div>
+
+          <div class="nearby-places-left-down">
+            <p class="nearby-places-city-4"></p>
+            <li class="nearby-places-icon-4"></li>
+            <p class="nearby-places-temp-4"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 5day-Tab -->
+    <div id="weather-container-5day" style="display: none;">
+      <div id="weather-container-5day-up">
+        <!-- Day 1 -->
+        <div id="Day-1">
+          <p class="title-weather"></p>
+          <p class="date-weather-1"></p>
+          <li class="icon-weather-1"></li>
+          <p class="temp-weather-1"></p>
+          <p class="forecast-weather-1"></p>
+        </div>
+        
+        <!-- Day 2 -->
+        <div id="Day-2">
+          <p class="title-weather"></p>
+          <p class="date-weather-2"></p>
+          <li class="icon-weather-2"></li>
+          <p class="temp-weather-2"></p>
+          <p class="forecast-weather-2"></p>
+        </div>
+
+        <!-- Day 3 -->
+        <div id="Day-3">
+          <p class="title-weather"></p>
+          <p class="date-weather-3"></p>
+          <li class="icon-weather-3"></li>
+          <p class="temp-weather-3"></p>
+          <p class="forecast-weather-3"></p>
+        </div>
+
+        <!-- Day 4 -->
+        <div id="Day-4">
+          <p class="title-weather"></p>
+          <p class="date-weather-4"></p>
+          <li class="icon-weather-4"></li>
+          <p class="temp-weather-4"></p>
+          <p class="forecast-weather-4"></p>
+        </div>
+
+        <!-- Day 5 -->
+        <div id="Day-5">
+          <p class="title-weather"></p>
+          <p class="date-weather-5"></p>
+          <li class="icon-weather-5"></li>
+          <p class="temp-weather-5"></p>
+          <p class="forecast-weather-5"></p>
+        </div>
+      </div>
+
+      <!-- Down -->
+      <div id="weather-container-5day-down">
+        <div id="hourly-weather">
+          <p class="title-weather">HOURLY</p>
+          <div id="hourly-weather-down">
+            <div class="Today">
+              <li class="gray-text">Today</li>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <li class="gray-text">Forecast</li>
+              <li class="gray-text">Temp (°C)</li>
+              <li class="gray-text">RealFeel</li>
+              <li class="gray-text">Wind (km/h)</li>
+            </div>
+
+            <!-- Hourly forecast 1-6d -->
+            <div id="Hourly-forecast-1">
+              <li class="today-li-1"> </li>
+              <li class="icon-li-1"></li>
+              <li class="forecast-li-1"></li>
+              <li class="temp-li-1"></li>
+              <li class="realFeel-li-1"></li>
+              <li class="wind-li-1"></li>
+            </div>
+            <div id="Hourly-forecast-2">
+              <li class="today-li-2"> </li>
+              <li class="icon-li-2"></li>
+              <li class="forecast-li-2"></li>
+              <li class="temp-li-2"></li>
+              <li class="realFeel-li-2"></li>
+              <li class="wind-li-2"></li>
+            </div>
+            <div id="Hourly-forecast-3">
+              <li class="today-li-3"> </li>
+              <li class="icon-li-3"></li>
+              <li class="forecast-li-3"></li>
+              <li class="temp-li-3"></li>
+              <li class="realFeel-li-3"></li>
+              <li class="wind-li-3"></li>
+            </div>
+            <div id="Hourly-forecast-4">
+              <li class="today-li-4"> </li>
+              <li class="icon-li-4"></li>
+              <li class="forecast-li-4"></li>
+              <li class="temp-li-4"></li>
+              <li class="realFeel-li-4"></li>
+              <li class="wind-li-4"></li>
+            </div>
+            <div id="Hourly-forecast-5">
+              <li class="today-li-5"> </li>
+              <li class="icon-li-5"></li>
+              <li class="forecast-li-5"></li>
+              <li class="temp-li-5"></li>
+              <li class="realFeel-li-5"></li>
+              <li class="wind-li-5"></li>
+            </div>
+            <div id="Hourly-forecast-6">
+              <li class="today-li-6"> </li>
+              <li class="icon-li-6"></li>
+              <li class="forecast-li-6"></li>
+              <li class="temp-li-6"></li>
+              <li class="realFeel-li-6"></li>
+              <li class="wind-li-6"></li>
+            </div>
+          </div>
+
+        </div>
+      </div>
+</body>
+</html>

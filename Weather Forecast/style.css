@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+
+  .MyWeather{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    color: #8e4848;
+
+  }
+ #weather-container, #weather-container-5day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #tabs {
+    background-color: #333;
+    display: flex;
+    padding: 10px;
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  .tab {
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  
+  #search-container {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+  }
+  
+  #search {
+    margin-top: 25px;
+  }
+  #search-input {
+    font-size: 18px;
+    width: 300px;
+    height: 30px;
+  }
+
+  #search-button {
+    height: 35px;
+    width: 60px;
+  }
+  
+ 
+
+  #current-weather, #hourly-weather, #nearby-places{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+  #nearby-places{
+    margin-bottom: 50px;
+  }
+  #current-weather-up{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .title-weather, .date-weather{
+    font-weight: bold;
+    color: #8e4848;
+    font-size: 18px;
+  }
+  li {
+    list-style-type: none;
+  }
+  #current-weather-down{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+  }
+
+  #current-weather-left, #current-weather-center, #current-weather-right{
+    display: flex;
+    flex-direction: column;
+  }
+  .gray-text, .description{
+    color: #9a9a9a;
+    font-size: 18px;
+    margin: 10px;
+  }
+
+  .gray-text-littl{
+    color: #9a9a9a;
+    font-size: 14px;
+  }
+
+  .degree{
+    font-size: 40px;
+  }
+
+  #hourly-weather-down{
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-between;
+  }
+
+  #hourly-weather-1, #hourly-weather-2, #hourly-weather-3, #hourly-weather-4, #hourly-weather-5, #hourly-weather-6{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  #nearby-places-1{
+    display: flex;
+    justify-content: space-around;
+
+  }
+
+  .nearby-places-right-up, .nearby-places-right-down, .nearby-places-left-up, .nearby-places-left-down{
+    display: flex;
+    height: 50px;
+    width: 300px;
+    background-color: rgb(231, 231, 231);
+    border-radius: 10px;
+    justify-content: center;
+    margin: 10px;
+  }
+
+
+  #weather-container-5day-up{
+    display: flex;
+  }
+
+  #Day-1, #Day-2, #Day-3, #Day-4, #Day-5{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .day-block.active {
+    background-color: #ccc;
+  }
+  
